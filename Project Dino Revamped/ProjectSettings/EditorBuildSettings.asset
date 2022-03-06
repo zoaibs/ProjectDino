@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 11b8fc6c8cc1eaf4b90c32757a12f7f9
+  - enabled: 1
+    path: Assets/Scenes/Predialogue.unity
+    guid: 0ee7df0d325bcf9438c9e6a77b2bd935
+  - enabled: 1
+    path: Assets/Scenes/Dialogue.unity
+    guid: 6585ea99a2f26b841938b247282c93db
+  - enabled: 1
+    path: Assets/Scenes/LevelBase.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  m_configObjects: {}
