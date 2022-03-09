@@ -83,6 +83,27 @@ public class PlayerController : MonoBehaviour
         }
 
         
+        void OnTriggerEnter2D(Collider2D collision)
+        {
+        GameObject Ladder = collision.gameObject;
+            if(Ladder.name == "Ladders")
+            {
+                Debug.Log("Collided with ladder");
+                ClimbLadder();
+            }
+
+        }
+        void ClimbLadder()
+        {
+            float inputVertical = Input.GetAxisRaw("Vertical");
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                
+                r2d.velocity = new Vector2(r2d.velocity.x, inputVertical * 10);
+            }
+        }       
+
+        
     }
 
     void FixedUpdate()
