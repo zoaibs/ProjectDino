@@ -15,6 +15,21 @@ EditorBuildSettings:
     path: Assets/Scenes/Dialogue.unity
     guid: 6585ea99a2f26b841938b247282c93db
   - enabled: 1
-    path: Assets/Scenes/LevelBase.unity
+    path: Assets/Scenes/PreLevel1.unity
+    guid: 7280fb9061401eb4a8b7d6e109c7813f
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/PreLevel2.unity
+    guid: d91577f24d837e2419f10ab3540555d8
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: b33354c3002a6564fb8f43597a9f27be
+  - enabled: 1
+    path: Assets/Scenes/PreLevel3.unity
+    guid: e69f42568c2b54a468e832847216a8e6
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: daaddbb17f5f7b24e99dd5b1f09a06e1
   m_configObjects: {}

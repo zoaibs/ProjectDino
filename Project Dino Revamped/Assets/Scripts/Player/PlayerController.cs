@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float gravityScale = 1.5f;
     public Camera mainCamera;
     public float midairVeloDecrease = .8f;
+    [SerializeField] public LayerMask whatIsLadder;
 
     bool facingRight = true;
     float moveDirection = 0;
@@ -23,6 +24,12 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D r2d;
     CapsuleCollider2D mainCollider;
     Transform t;
+    public float ladderDistance;
+    private bool isClimbing;
+    private float inputVertical;
+    private float inputHorizontal;
+    public float climbSpeed = 3f;
+    
 
    
     void Start()
@@ -83,25 +90,25 @@ public class PlayerController : MonoBehaviour
         }
 
         
-        void OnTriggerEnter2D(Collider2D collision)
-        {
-        GameObject Ladder = collision.gameObject;
-            if(Ladder.name == "Ladders")
-            {
-                Debug.Log("Collided with ladder");
-                ClimbLadder();
-            }
+        // void OnTriggerEnter2D(Collider2D collision)
+        // {
+        // GameObject Ladder = collision.gameObject;
+        //     if(Ladder.name == "Ladders")
+        //     {
+        //         Debug.Log("Collided with ladder");
+        //         ClimbLadder();
+        //     }
 
-        }
-        void ClimbLadder()
-        {
-            float inputVertical = Input.GetAxisRaw("Vertical");
-            if (Input.GetKeyDown(KeyCode.E))
-            {
+        // }
+        // void ClimbLadder()
+        // {
+        //     float inputVertical = Input.GetAxisRaw("Vertical");
+        //     if (Input.GetKeyDown(KeyCode.E))
+        //     {
                 
-                r2d.velocity = new Vector2(r2d.velocity.x, inputVertical * 10);
-            }
-        }       
+        //         r2d.velocity = new Vector2(r2d.velocity.x, inputVertical * 10);
+        //     }
+        // }       
 
         
     }
@@ -133,6 +140,27 @@ public class PlayerController : MonoBehaviour
            isMoving = false;
        } else { isMoving = true;}
 
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.up, ladderDistance, whatIsLadder);
+       
+       if(hitInfo.collider != null)
+       {
+           if(Input.GetKeyDown(KeyCode.W))
+           {    Debug.DrawRay(transform.position, transform.forward, Color.green); print("Hit");
+               //isGrounded = false;    <- tried to make ladder movement work with holding down a key but its way too much work so fuck that
+               isClimbing = true;
+           } 
+           
+       } else {
+           isClimbing = false;
+           r2d.gravityScale = 4f;
+
+       }
+       if(isClimbing == true)
+       {
+            inputVertical = Input.GetAxisRaw("Vertical");
+            r2d.velocity = new Vector2(moveDirection * horizontalJumpVelocity / 2, r2d.velocity.y);
+            r2d.gravityScale = 0;
+       }
        
         // if(isGrounded)
         // {
