@@ -20,17 +20,17 @@ public class RespawnPlayer : MonoBehaviour
     
     
 
-     private void OnTriggerEnter2D(Collider2D collision)
-    {
-        GameObject collisionGameObject = collision.gameObject;
-        if(collisionGameObject.name == "Archaeologist"){
-            Respawn();
-        }
+    //  private void OnTriggerEnter2D(Collider2D collision)
+    // {
+    //     GameObject collisionGameObject = collision.gameObject;
+    //     if(collisionGameObject.name == "Archaeologist"){
+    //         Respawn();
+    //     }
 
-    }
+    // }
 
-    private void Respawn()
-    {
-        SceneManager.LoadScene(respawnLevel);
-    }
+    // private void Respawn()
+    // {
+    //     SceneManager.LoadScene(respawnLevel);
+    // }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CapsuleCollider2D))]
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private float inputVertical;
     private float inputHorizontal;
     public float climbSpeed = 3f;
+    private Vector3 respawnPoint; 
     
 
    
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour
         r2d.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         r2d.gravityScale = gravityScale;
         facingRight = t.localScale.x > 0;
+        respawnPoint = transform.position;
 
     //     if (mainCamera)
     //     {
@@ -112,7 +115,21 @@ public class PlayerController : MonoBehaviour
 
         
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        GameObject collisionGameObject = collision.gameObject;
+        if(collisionGameObject.name == "Obstacles")
+        {
+            transform.position = respawnPoint;
+        } 
+        else if(collision.tag == "Checkpoint" )
+        {
+            respawnPoint = transform.position;
+        }
 
+    }
+
+  
     void FixedUpdate()
     {
         Bounds colliderBounds = mainCollider.bounds;
@@ -180,4 +197,5 @@ public class PlayerController : MonoBehaviour
         // Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(0, colliderRadius, 0), isGrounded ? Color.green : Color.red);
         // Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(colliderRadius, 0, 0), isGrounded ? Color.green : Color.red);
     }
+    
 }
