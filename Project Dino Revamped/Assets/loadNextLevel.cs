@@ -12,7 +12,9 @@ public class loadNextLevel : MonoBehaviour
         GameObject collisionGameObject = collision.gameObject;
         if(collisionGameObject.name == "Archaeologist")
         {
-             SceneManager.LoadScene(LevelToLoad);
+            
+            SceneManager.LoadScene(LevelToLoad);
+             
         }
     }
    

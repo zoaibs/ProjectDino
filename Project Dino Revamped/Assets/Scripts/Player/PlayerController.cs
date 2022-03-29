@@ -174,9 +174,10 @@ public class PlayerController : MonoBehaviour
        }
        if(isClimbing == true)
        {
-            inputVertical = Input.GetAxisRaw("Vertical");
-            r2d.velocity = new Vector2(moveDirection * horizontalJumpVelocity / 2, r2d.velocity.y);
-            r2d.gravityScale = 0;
+            //inputVertical = Input.GetAxisRaw("Vertical");
+            //r2d.velocity = new Vector2(moveDirection * horizontalJumpVelocity / 2, r2d.velocity.y);
+            //r2d.gravityScale = 0;
+            isGrounded = true;
        }
        
         // if(isGrounded)
